@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Input } from 'src/client/components';
 
 const Login: FC = () => {
   return (
@@ -11,33 +12,9 @@ const Login: FC = () => {
         </a>
         <form action="" className="flex flex-col gap-6">
           <h1 className="text-3xl font-medium font-poppins">Sign Up</h1>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              className="p-2 text-black rounded-sm"
-              placeholder="Name"
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="email">Email Address</label>
-            <input
-              type="text"
-              id="email"
-              className="p-2 text-black rounded-sm"
-              placeholder="Email address"
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              className="p-2 text-black rounded-sm"
-              placeholder="Password"
-            />
-          </div>
+          <Input id={'name'} label={'Name'} />
+          <Input id={'email'} label={'Email Address'} />
+          <Input id={'password'} label={'Password'} />
           <input
             type="submit"
             value="Sign Up"

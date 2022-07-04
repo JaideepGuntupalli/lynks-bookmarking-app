@@ -23,7 +23,7 @@
       "esnext"
     ],
     "allowJs": true,
-    "strict": false,
+    "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
