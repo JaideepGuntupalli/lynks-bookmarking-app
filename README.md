@@ -29,4 +29,4 @@ $ yarn start:prod
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+Lynks is [MIT licensed](LICENSE).
