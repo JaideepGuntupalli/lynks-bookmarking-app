@@ -22,6 +22,15 @@ $ yarn start:dev
 $ yarn start:prod
 ```
 
+## Built with
+
+-   NextJS
+-   NestJS
+-   Prisma
+-   PostgreSQL
+-   Docker
+-   Tailwind CSS
+
 ## Stay in touch
 
 - Author - [Jaideep Guntupalli](https://jaideepguntupalli.com)
