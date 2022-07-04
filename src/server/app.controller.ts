@@ -2,9 +2,21 @@ import { Controller, Get, Render } from '@nestjs/common';
 
 @Controller()
 export class AppController {
-  @Get()
+  @Get('/')
   @Render('index')
-  home() {
+  homePage() {
+    return {};
+  }
+
+  @Get('/login')
+  @Render('auth/login')
+  loginPage() {
+    return {};
+  }
+
+  @Get('/signup')
+  @Render('auth/signup')
+  signUpPage() {
     return {};
   }
 }
