@@ -21,6 +21,8 @@ model User {
   name String?
 
   bookmarks Bookmark[]
+  projects Project[]
+
 
   @@map("users")
 }
@@ -37,5 +39,24 @@ model Bookmark {
   ownerId Int
   user    User @relation(fields: [ownerId], references: [id])
 
+  projectId Int
+  project  Project @relation(fields: [projectId], references: [id])
+
   @@map("bookmarks")
+}
+
+model Project {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name String
+  description String?
+
+  ownerId Int
+  user    User @relation(fields: [ownerId], references: [id])
+
+  bookmarks Bookmark[]
+
+  @@map("projects")
 }
