@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('./fonts/fonts.css');
+
+body {
+    background-color: #1F1D2B;
+    background-image: url("https://www.dwinawan.com/new_bookmark_assets/bookmarkgradient.svg");
+    background-repeat: no-repeat;
+    background-position: top center;
+    color: #FFFFFF;
+    font-family: 'DM Sans', sans-serif;
+    /* font-weight: 600;
+    font-size: 45px;
+    line-height: 45px;
+    letter-spacing: 0.3px;
+    padding: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1); */
+}
