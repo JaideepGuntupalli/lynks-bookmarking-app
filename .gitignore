@@ -38,4 +38,6 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
+#Next
+.next
 index.html
