@@ -3,18 +3,15 @@ import { PrismaService } from '../prisma/prisma.service';
 import { AuthDto } from './dto';
 import * as argon from 'argon2';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
-import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable({})
 export class AuthService {
-  constructor(
-    private prisma: PrismaService,
-    private jwt: JwtService,
-    private config: ConfigService,
-  ) {}
+  constructor(private prisma: PrismaService, private config: ConfigService) {}
 
-  async signup(dto: AuthDto): Promise<{ access_token: string }> {
+  async signup(
+    dto: AuthDto,
+  ): Promise<{ id: number; name: string; email: string }> {
     //generate the password hash
     const hash = await argon.hash(dto.password);
 
@@ -27,13 +24,13 @@ export class AuthService {
         },
         select: {
           id: true,
+          name: true,
           email: true,
-          createdAt: true,
         },
       });
 
       //return the saved user
-      return this.signToken(user.id, user.email);
+      return user;
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
@@ -45,11 +42,19 @@ export class AuthService {
     }
   }
 
-  async login(dto: AuthDto): Promise<{ access_token: string }> {
+  async login(
+    dto: AuthDto,
+  ): Promise<{ id: number; name: string; email: string }> {
     //find the user by email
     const user = await this.prisma.user.findUnique({
       where: {
         email: dto.email,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        password: true,
       },
     });
 
@@ -62,26 +67,10 @@ export class AuthService {
     //if password incorrect throw exception
     if (!pwMatches) throw new ForbiddenException('Incorrect password');
 
+    //delete password from user
+    delete user.password;
+
     //send back the user
-    return this.signToken(user.id, user.email);
-  }
-
-  async signToken(
-    userId: number,
-    email: string,
-  ): Promise<{ access_token: string }> {
-    const payload = {
-      sub: userId,
-      email,
-    };
-
-    const token = await this.jwt.signAsync(payload, {
-      expiresIn: '7 days',
-      secret: this.config.get('JWT_SECRET'),
-    });
-
-    return {
-      access_token: token,
-    };
+    return user;
   }
 }

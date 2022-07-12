@@ -8,13 +8,20 @@ import { BookmarkModule } from './bookmark/bookmark.module';
 import { AuthModule } from './auth/auth.module';
 import { ProjectModule } from './project/project.module';
 import { AppController } from './app.controller';
+import path from 'path';
 
 @Module({
   imports: [
     RenderModule.forRootAsync(
-      Next({ dev: true }) /* null means that nest-next 
+      Next({
+        dev: true,
+        dir: path.resolve(__dirname, '..', 'src'),
+      }) /* null means that nest-next 
     should look for pages in root dir */,
-      { viewsDir: null },
+      {
+        passthrough404: true,
+        viewsDir: null,
+      },
     ),
     ConfigModule.forRoot({ isGlobal: true }),
     AuthModule,

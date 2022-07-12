@@ -1,5 +1,5 @@
 {
-  "name": "rename",
+  "name": "lynks",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -36,10 +36,12 @@
     "@nestjs/platform-express": "^8.0.0",
     "@prisma/client": "^4.0.0",
     "argon2": "^0.28.5",
+    "axios": "^0.27.2",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "nest-next": "^10.0.0",
     "next": "^12.2.0",
+    "next-auth": "^4.9.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "react": "^18.2.0",
@@ -78,6 +80,9 @@
     "ts-node": "^10.0.0",
     "tsconfig-paths": "4.0.0",
     "typescript": "^4.3.5"
+  },
+  "prisma": {
+    "schema": "src/prisma/schema.prisma"
   },
   "jest": {
     "moduleFileExtensions": [

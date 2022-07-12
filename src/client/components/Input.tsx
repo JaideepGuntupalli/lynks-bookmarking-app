@@ -12,6 +12,7 @@ export const Input: FC<Props> = (props) => {
       <input
         type={props.id}
         id={props.id}
+        name={props.id}
         className="p-2 text-black rounded-sm"
         placeholder={props.label}
       />

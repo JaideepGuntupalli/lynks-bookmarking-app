@@ -19,4 +19,10 @@ export class AppController {
   signUpPage() {
     return {};
   }
+
+  @Get('/profile')
+  @Render('user/profile')
+  profilePage() {
+    return {};
+  }
 }
